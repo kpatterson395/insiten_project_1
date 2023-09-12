@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { NoteContextProvider } from './NoteContext';
+import { SelectContextProvider } from './SelectContext';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <NoteContextProvider>
+      <SelectContextProvider>
       <App />
+
+      </SelectContextProvider>
     </NoteContextProvider>
   </React.StrictMode>
 );

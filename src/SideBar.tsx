@@ -11,6 +11,8 @@ import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import { NoteInterface } from './App';
 import { NoteContext} from './NoteContext'
+import { SelectContext} from './SelectContext'
+
 
 const drawerWidth = 240;
 
@@ -19,11 +21,17 @@ interface IProps {
 }
 
 
+
 export default function SideBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const { notesContext }: IProps = React.useContext(NoteContext);
+  const { selected, dispatch } = React.useContext(SelectContext);
 
+
+  const handleNoteSelect = (id: string) => {
+    dispatch({type: "added", id})
+  }
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -35,7 +43,7 @@ export default function SideBar() {
       <List>
         {notesContext.map(({text, id, date}) => (
           <ListItem key={id} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => handleNoteSelect(id)}>
               <ListItemText primary={`${text.slice(0,5)}...`} />
             </ListItemButton>
           </ListItem>
