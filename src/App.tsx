@@ -4,7 +4,9 @@ import './Controls'
 import Controls from './Controls';
 import { useState } from 'react'
 import Note from './Note';
- 
+import SideBar from './SideBar'; 
+
+
 export interface NoteInterface {
   id: string,
   text: string,
@@ -20,10 +22,9 @@ function App() {
 
   return (
     <div className="App">
+      <SideBar notes={notes} />
       <div>
-        {notes.map((note) => (
-          <Note key={note.id} note={note}/>
-        ))}
+    
         <Controls addNote={addNote} />
       </div>
     </div>
