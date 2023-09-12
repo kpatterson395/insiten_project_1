@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { NoteInterface } from './App';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface IAppProps {
 
@@ -16,7 +17,7 @@ export default function AddNoteForm({handleSubmitNewNote}: IAppProps) {
   const [ text, setText ] = useState('')
 
   const handleSubmit = () => {
-    handleSubmitNewNote({text, date: new Date(), id: '2'})
+    handleSubmitNewNote({text, date: new Date(), id: uuidv4()})
   }
 
   return (

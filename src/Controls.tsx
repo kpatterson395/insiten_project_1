@@ -17,6 +17,7 @@ export default function Controls ({addNote}: IAppProps) {
 
   const handleSubmitNewNote = (note: NoteInterface) => {
     addNote(note)
+    setShowAddForm(false)
   }
 
   return (

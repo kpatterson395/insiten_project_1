@@ -10,7 +10,7 @@ interface IProps {
 export default function Note({note}: IProps) {
   return (
     <div>
-        <h3>{note.date.toDateString()}</h3>
+        <h3>{note.date.toDateString() + " " + note.date.toLocaleTimeString()}</h3>
       <p>{note.text}</p>
     </div>
   );
