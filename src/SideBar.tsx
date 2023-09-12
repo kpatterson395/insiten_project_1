@@ -4,27 +4,25 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { NoteInterface } from './App';
+import { NoteContext} from './NoteContext'
+
 const drawerWidth = 240;
 
 interface IProps {
-    notes: NoteInterface[]
+    notesContext: NoteInterface[]
 }
 
 
-export default function SideBar({notes}: IProps) {
+export default function SideBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const { notesContext }: IProps = React.useContext(NoteContext);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -35,7 +33,7 @@ export default function SideBar({notes}: IProps) {
       <Toolbar />
       <Divider />
       <List>
-        {notes.map(({text, id, date}) => (
+        {notesContext.map(({text, id, date}) => (
           <ListItem key={id} disablePadding>
             <ListItemButton>
               <ListItemText primary={`${text.slice(0,5)}...`} />

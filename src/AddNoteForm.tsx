@@ -5,19 +5,22 @@ import Button from '@mui/material/Button';
 import { NoteInterface } from './App';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { NoteContext} from './NoteContext'
 
 export interface IAppProps {
 
-  handleSubmitNewNote: (n: NoteInterface) => void
+  handleSubmitNewNote: () => void
 }
 
 
 export default function AddNoteForm({handleSubmitNewNote}: IAppProps) {
 
   const [ text, setText ] = useState('')
+  const { notesContext, dispatch } = React.useContext(NoteContext);
 
   const handleSubmit = () => {
-    handleSubmitNewNote({text, date: new Date(), id: uuidv4()})
+    dispatch({type: 'added', text, date: new Date(), id: uuidv4()})
+    handleSubmitNewNote()
   }
 
   return (

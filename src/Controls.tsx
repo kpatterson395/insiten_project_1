@@ -6,17 +6,13 @@ import AddNoteForm from './AddNoteForm';
 import { useState } from "react";
 import RemoveIcon from '@mui/icons-material/Remove';
 
-export interface IAppProps {
 
-    addNote: (n: NoteInterface) => void
-}
-
-export default function Controls ({addNote}: IAppProps) {
+export default function Controls () {
 
   const [showAddForm, setShowAddForm] = useState(false)
 
-  const handleSubmitNewNote = (note: NoteInterface) => {
-    addNote(note)
+
+  const handleSubmitNewNote = () => {
     setShowAddForm(false)
   }
 
