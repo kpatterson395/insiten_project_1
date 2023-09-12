@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import {NoteInterface} from "./App"
 import AddNoteForm from './AddNoteForm';
 import { useState } from "react";
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export interface IAppProps {
 
@@ -20,7 +21,7 @@ export default function Controls ({addNote}: IAppProps) {
         )}
         <div> 
           <IconButton onClick={() => setShowAddForm(!showAddForm)}>
-            <AddIcon />
+           {showAddForm ? <RemoveIcon /> : <AddIcon /> } 
           </IconButton>
         </div>
     

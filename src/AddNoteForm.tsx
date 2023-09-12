@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export default function AddNoteForm() {
   return (
@@ -20,7 +21,7 @@ export default function AddNoteForm() {
           placeholder="Type your note here..."
         />
       </div>
-      <button>Add new note</button>
+      <Button variant="text">Add new note</Button>
     </Box>
   );
 }
