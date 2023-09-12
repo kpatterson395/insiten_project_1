@@ -1,13 +1,9 @@
 import * as React from 'react';
+import { NoteInterface } from './App';
 
-interface Note {
-    id: string,
-    text: string,
-    date: Date
-}
 
 interface IProps {
-    note: Note
+    note: NoteInterface
 }
 
 
