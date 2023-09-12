@@ -2,8 +2,23 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { NoteInterface } from './App';
+import { useState } from 'react';
 
-export default function AddNoteForm() {
+export interface IAppProps {
+
+  handleSubmitNewNote: (n: NoteInterface) => void
+}
+
+
+export default function AddNoteForm({handleSubmitNewNote}: IAppProps) {
+
+  const [ text, setText ] = useState('')
+
+  const handleSubmit = () => {
+    handleSubmitNewNote({text, date: new Date(), id: '2'})
+  }
+
   return (
     <Box
       component="form"
@@ -12,6 +27,7 @@ export default function AddNoteForm() {
       }}
       noValidate
       autoComplete="off"
+      onSubmit={handleSubmit}
     >
       <div>
         <TextField
@@ -19,9 +35,11 @@ export default function AddNoteForm() {
           multiline
           rows={10}
           placeholder="Type your note here..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
       </div>
-      <Button variant="text">Add new note</Button>
+      <Button variant="text" onClick={handleSubmit}>Add new note</Button>
     </Box>
   );
 }

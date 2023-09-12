@@ -14,10 +14,15 @@ export interface IAppProps {
 export default function Controls ({addNote}: IAppProps) {
 
   const [showAddForm, setShowAddForm] = useState(false)
+
+  const handleSubmitNewNote = (note: NoteInterface) => {
+    addNote(note)
+  }
+
   return (
     <div>  
        {showAddForm && (
-        <AddNoteForm />
+        <AddNoteForm handleSubmitNewNote={handleSubmitNewNote}/>
         )}
         <div> 
           <IconButton onClick={() => setShowAddForm(!showAddForm)}>
