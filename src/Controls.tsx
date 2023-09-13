@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
-import {NoteInterface} from "./App"
+import {NoteInterface} from "./NoteReducer"
 import AddNoteForm from './AddNoteForm';
 import { useState } from "react";
 import RemoveIcon from '@mui/icons-material/Remove';

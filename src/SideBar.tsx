@@ -9,7 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
-import { NoteInterface } from './App';
+import { NoteInterface } from './NoteReducer';
 import { NoteContext} from './NoteContext'
 import { SelectContext} from './SelectContext'
 

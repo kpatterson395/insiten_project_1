@@ -1,4 +1,17 @@
-import { NoteInterface } from "./App";
+
+
+export enum Author {
+  me = "Kristie",
+  other = "Guest"
+}
+
+
+export interface NoteInterface {
+  id: string,
+  text: string,
+  date: Date,
+  author: Author
+}
 
 export const noteReducer = (notesContext: NoteInterface[], action: any) => {
     switch (action.type) {
@@ -6,7 +19,8 @@ export const noteReducer = (notesContext: NoteInterface[], action: any) => {
         return [...notesContext, {
           id: action.id,
           text: action.text,
-          date: action.date
+          date: action.date,
+          author: Author.other
         }];
       }
       case 'changed': {

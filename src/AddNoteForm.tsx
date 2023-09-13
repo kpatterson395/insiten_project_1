@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { NoteInterface } from './App';
+import { NoteInterface } from './NoteReducer';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { NoteContext} from './NoteContext'

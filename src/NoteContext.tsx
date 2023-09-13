@@ -1,8 +1,11 @@
 import { createContext,useReducer } from 'react';
 import { noteReducer } from './NoteReducer';
-import { NoteInterface } from './App';
+import { NoteInterface, Author } from './NoteReducer';
 
-const defaultNotes: any = [{text: 'test1230', date: new Date(), id: '1'}]
+
+
+
+const defaultNotes: any = [{text: 'test1230', date: new Date(), id: '1', author: Author.me}]
 
 
 export const NoteContext = createContext(defaultNotes);

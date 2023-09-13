@@ -6,13 +6,10 @@ import SideBar from './SideBar';
 import { SelectContext } from './SelectContext';
 import { NoteContext } from './NoteContext';
 import CloseIcon from '@mui/icons-material/Close';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
+import Note from './Note';
+import { NoteInterface, Author } from './NoteReducer';
 
-export interface NoteInterface {
-  id: string,
-  text: string,
-  date: Date
-}
 
 function App() {
   const {selected, dispatch} = useContext(SelectContext);
@@ -20,6 +17,7 @@ function App() {
 
 
   const selectedNote = notesContext.find((n: NoteInterface) => n.id === selected)
+
   const handleRemoveSelect = () => {
     dispatch({type: "added", id: ""})
   }
@@ -30,14 +28,7 @@ function App() {
       <div>
         {
           selectedNote && (
-            <div>
-            <b>{selectedNote?.date.toDateString()}</b>
-            <p> {selectedNote?.text}</p>
-            <IconButton onClick={() => handleRemoveSelect()}>
-              <CloseIcon />
-            </IconButton>
-           
-          </div>
+           <Note />
           )
         }
        
