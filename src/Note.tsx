@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -11,12 +10,13 @@ import { SelectContext } from './SelectContext';
 import { NoteContext } from './NoteContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
+import useSelected from './hooks/useSelected';
 
 export default function Note() {
-
+    const selectedNote = useSelected()
+    console.log(selectedNote)
     const {selected, dispatch} = React.useContext(SelectContext);
-    const { notesContext, dispatchNote } = React.useContext(NoteContext);
-    const selectedNote = notesContext.find((n: NoteInterface) => n.id === selected)
+    const { dispatchNote } = React.useContext(NoteContext);
 
     const handleRemoveSelect = () => {
       dispatch({type: "added", id: ""})
