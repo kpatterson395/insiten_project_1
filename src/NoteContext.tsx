@@ -11,11 +11,11 @@ const defaultNotes: any = [{text: 'test1230', date: new Date(), id: '1', author:
 export const NoteContext = createContext(defaultNotes);
 
 export const NoteContextProvider = (props: any) => {
-    const [notesContext, dispatch] = useReducer(noteReducer, defaultNotes); 
+    const [notesContext, dispatchNote] = useReducer(noteReducer, defaultNotes); 
 
 
     return (
-      <NoteContext.Provider value={{ notesContext, dispatch }}>
+      <NoteContext.Provider value={{ notesContext, dispatchNote }}>
         {props.children}
       </NoteContext.Provider>
     );

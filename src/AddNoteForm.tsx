@@ -16,10 +16,10 @@ export interface IAppProps {
 export default function AddNoteForm({handleSubmitNewNote}: IAppProps) {
 
   const [ text, setText ] = useState('')
-  const { notesContext, dispatch } = React.useContext(NoteContext);
+  const { notesContext, dispatchNote } = React.useContext(NoteContext);
 
   const handleSubmit = () => {
-    dispatch({type: 'added', text, date: new Date(), id: uuidv4()})
+    dispatchNote({type: 'added', text, date: new Date(), id: uuidv4()})
     handleSubmitNewNote()
   }
 
