@@ -12,6 +12,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { NoteInterface } from './NoteReducer';
 import { NoteContext} from './NoteContext'
 import { SelectContext} from './SelectContext'
+import useSelected from './hooks/useSelected';
 
 
 const drawerWidth = 240;
@@ -24,9 +25,11 @@ interface IProps {
 
 export default function SideBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const selectedNote = useSelected()
 
   const { notesContext }: IProps = React.useContext(NoteContext);
   const { selected, dispatch } = React.useContext(SelectContext);
+
 
 
   const handleNoteSelect = (id: string) => {
@@ -41,13 +44,15 @@ export default function SideBar() {
       <Toolbar />
       <Divider />
       <List>
-        {notesContext.map(({text, id, date}) => (
-          <ListItem key={id} disablePadding>
+        {notesContext.map(({text, id, date}) =>{
+          let color = selectedNote?.id === id ? 'lightgrey' : 'white'
+          return (
+          <ListItem key={id} disablePadding sx={{backgroundColor: color}}>
             <ListItemButton onClick={() => handleNoteSelect(id)}>
               <ListItemText primary={`${text.slice(0,5)}...`} />
             </ListItemButton>
           </ListItem>
-        ))}
+        )})}
       </List>
       
     </div>

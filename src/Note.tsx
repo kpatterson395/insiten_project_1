@@ -14,13 +14,10 @@ import useSelected from './hooks/useSelected';
 
 export default function Note() {
     const selectedNote = useSelected()
-    console.log(selectedNote)
     const {selected, dispatch} = React.useContext(SelectContext);
     const { dispatchNote } = React.useContext(NoteContext);
 
-    const handleRemoveSelect = () => {
-      dispatch({type: "added", id: ""})
-    }
+
 
     const handleDeleteNote = () => {
       dispatchNote({type: "deleted", id: selected})
@@ -43,9 +40,7 @@ export default function Note() {
         </Typography>
       </CardContent>
       <CardActions>
-          <Button variant="outlined" startIcon={<CloseIcon />} onClick={() => handleRemoveSelect()}>
-                Clear Selection
-          </Button>
+          
           <IconButton onClick={() => handleDeleteNote()}>
             <DeleteIcon />
           </IconButton>
