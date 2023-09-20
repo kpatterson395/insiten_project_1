@@ -11,9 +11,7 @@ import Note from './Note';
 import { NoteInterface, Author } from './NoteReducer';
 import useSelected from './hooks/useSelected';
 
-
 function App() {
-  const selectedNote = useSelected()
 
   const {selected, dispatch} = useContext(SelectContext);
   const { notesContext } = useContext(NoteContext);
@@ -21,7 +19,8 @@ function App() {
     dispatch({type: "added", id: ""})
   }
 
-  // const selectedNote = notesContext.find((n: NoteInterface) => n.id === selected)
+
+  const selectedNote: NoteInterface = notesContext.find((n: NoteInterface) => n.id === selected)
 
 
   return (
@@ -29,7 +28,7 @@ function App() {
       <SideBar />
       <div>
         {
-          selectedNote && (
+          selected && (
            <Note />
           )
         }

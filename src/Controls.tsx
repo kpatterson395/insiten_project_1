@@ -9,7 +9,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 export default function Controls () {
 
-  const [showAddForm, setShowAddForm] = useState(false)
+  const [showAddForm, setShowAddForm] = useState<boolean>(false)
 
 
   const handleSubmitNewNote = () => {

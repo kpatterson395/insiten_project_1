@@ -10,7 +10,7 @@ export interface NoteInterface {
   id: string,
   text: string,
   date: Date,
-  author: Author
+  author?: Author
 }
 
 export const noteReducer = (notesContext: NoteInterface[], action: any) => {
@@ -25,8 +25,11 @@ export const noteReducer = (notesContext: NoteInterface[], action: any) => {
       }
       case 'changed': {
         return notesContext.map(t => {
-          if (t.id === action.task.id) {
-            return action.task;
+          if (t.id === action.id) {
+            return {
+              ...t,
+              text: action.text
+            }
           } else {
             return t;
           }

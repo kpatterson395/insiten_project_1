@@ -25,11 +25,11 @@ interface IProps {
 
 export default function SideBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const selectedNote = useSelected()
 
   const { notesContext }: IProps = React.useContext(NoteContext);
   const { selected, dispatch } = React.useContext(SelectContext);
 
+  const selectedNote = useSelected(selected, notesContext)
 
 
   const handleNoteSelect = (id: string) => {

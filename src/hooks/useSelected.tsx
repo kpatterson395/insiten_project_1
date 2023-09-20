@@ -3,15 +3,15 @@ import { NoteInterface } from '../NoteReducer';
 import { SelectContext } from '../SelectContext';
 import { NoteContext } from '../NoteContext';
 
-export interface IAppProps {
-    id: string
-}
 
-export default function useSelected() {
 
+//try returning a function ?
+
+
+export default function useSelected(selected: string, notesContext: NoteInterface[]) {
     const [selectedVal, setSelectedVal] = useState<NoteInterface | null>()
-    const  {selected, dispatch} = React.useContext(SelectContext);
-    const { notesContext, dispatchNote } = React.useContext(NoteContext);
+    // const  {selected, dispatch} = React.useContext(SelectContext);
+    // const { notesContext, dispatchNote } = React.useContext(NoteContext);
     useEffect(() => {
         notesContext.forEach((n: NoteInterface) => {
             if(n.id === selected){
@@ -20,7 +20,5 @@ export default function useSelected() {
         })
     }, [selected])
     
-
     return selectedVal
-
 }
